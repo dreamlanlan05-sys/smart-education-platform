@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  role          Role
+  grade         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  conversations Conversation[]
+  lessonPlans   LessonPlan[]
+  learningLogs  LearningLog[]
+  achievements  Achievement[]
+}
+
+enum Role {
+  STUDENT
+  TEACHER
+  PARENT
+}
+
+model Conversation {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  messages  Json
+  createdAt DateTime @default(now())
+}
+
+model LessonPlan {
+  id        String   @id @default(cuid())
+  teacherId String
+  teacher   User     @relation(fields: [teacherId], references: [id])
+  subject   String
+  grade     String
+  topic     String
+  content   String
+  duration  Int
+  createdAt DateTime @default(now())
+}
+
+model LearningLog {
+  id        String   @id @default(cuid())
+  studentId String
+  student   User     @relation(fields: [studentId], references: [id])
+  activity  String
+  duration  Int
+  subject   String?
+  createdAt DateTime @default(now())
+}
+
+model Achievement {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  title       String
+  description String
+  type        String
+  blockchainHash String?
+  createdAt   DateTime @default(now())
+}
