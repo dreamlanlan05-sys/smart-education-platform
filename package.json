@@ -9,7 +9,6 @@
     "lint": "next lint",
     "audit": "npx codex audit",
     "repair": "npx codex fix"
-}
   },
   "dependencies": {
     "@prisma/client": "^6.17.1",
