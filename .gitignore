@@ -3,3 +3,8 @@ node_modules
 .env
 
 
+# 添加忽略规则
+.DS_Store
+.next/
+*.log
+node_modules/
