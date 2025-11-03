@@ -1,12 +1,12 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+// app/layout.tsx
 import './globals.css'
+import './animations.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = { className: '' }
 
-export const metadata: Metadata = {
-  title: '智慧教育学习伙伴 - Learning is Earning',
-  description: 'AI驱动的个性化学习平台，让学习创造价值',
+export const metadata = {
+  title: '智慧教育学习伙伴',
+  description: 'AI驱动的学习革命平台',
 }
 
 export default function RootLayout({
@@ -15,8 +15,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="zh-CN">
-      <body className={inter.className}>{children}</body>
+    <html lang="zh">
+      <body className={inter.className}>
+        <div className="background-animation"></div>
+        <main>{children}</main>
+      </body>
     </html>
   )
 }

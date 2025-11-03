@@ -1,0 +1,55 @@
+/* === 动画效果增强 === */
+
+/* .fade-in 和 @keyframes fadeInUps 
+  已被成功迁移到 tailwind.config.ts
+  我们在这里将它们删除，以避免冲突。
+*/
+
+/* 按钮呼吸动画 */
+.breathe {
+  animation: breathe 2.5s ease-in-out infinite;
+  /* 可以在这里添加按钮的基础样式，例如：*/
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #ffffff;
+  color: #0066ff;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 102, 255, 0.2);
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(0, 102, 255, 0.2);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 102, 255, 0.35);
+  }
+}
+
+/* 顾问示例中的背景动画 (来自 index.js 示例) */
+.background-animation {
+  /* 这里可以添加一个动态背景，例如 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  /* 使用您在 globals.css 中定义的渐变背景 */
+  background: linear-gradient(135deg, #0066ff, #00cccc);
+  animation: gradient-flow 10s ease infinite alternate;
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+

@@ -1,58 +1,78 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-* {
+/* === 全局基础样式 === */
+html, body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  color: rgb(255, 255, 255);
-  background: transparent;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  background: linear-gradient(135deg, #0066ff, #00cc66);
+  color: #f9f9f9;
+  height: 100%;
   overflow-x: hidden;
 }
 
-/* 自定义滚动条 */
-::-webkit-scrollbar {
-  width: 8px;
+* {
+  box-sizing: border-box;
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+/* === 页面默认居中布局 === */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 2rem;
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(34, 197, 94, 0.5);
-  border-radius: 10px;
+/* === 标题与说明文本 === */
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #ffffff;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(34, 197, 94, 0.7);
+p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  max-width: 600px;
+  color: #f1f1f1;
 }
 
-/* 平滑滚动 */
-html {
-  scroll-behavior: smooth;
-}
-
-/* 禁用文本选择时的蓝色高亮（可选） */
-::selection {
-  background: rgba(34, 197, 94, 0.3);
-  color: white;
-}
-
-/* 移除默认的按钮样式 */
+/* === 按钮样式 === */
 button {
+  background: #ffffff;
+  color: #0070f3;
+  font-weight: 600;
   border: none;
-  background: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  margin-top: 1.5rem;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* 确保链接没有默认样式 */
-a {
-  text-decoration: none;
-  color: inherit;
+button:hover {
+  background: #0070f3;
+  color: #ffffff;
+}
+
+/* === 动画背景区域 === */
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(120deg, #001f3f, #0070f3, #00cc66);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+}
+
+/* === 渐变流动动画 === */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
